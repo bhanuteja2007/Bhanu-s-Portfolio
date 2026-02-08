@@ -1,4 +1,4 @@
-# 🚀 Bhanu Teja Modem — AI Portfolio
+# 🚀 Bhanu Teja Modem —  Portfolio
 
 A futuristic, interactive, and visually immersive personal portfolio website showcasing my journey as an **AI Full-Stack Developer and Future AI Architect**. The site blends modern UI/UX, glassmorphism aesthetics, smooth animations, and real functionality with an integrated contact system.
 
