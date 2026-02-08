@@ -1,0 +1,1417 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio of Bhanu Teja Modem - AI Full-Stack Developer & Future AI Architect. Engineering the next generation of AI.">
+    <meta property="og:image" content="https://media.licdn.com/dms/image/v2/D4E03AQHaMUVUZw6iow/profile-displayphoto-scale_200_200/B4EZoFyc.pKsAY-/0/1761033704345?e=1767225600&v=beta&t=UAotm4zgAIcjBhKWnO5wPAf3Ehuyl5iIrsixechm8-w">
+    <title>Bhanu Teja Modem | Future AI Architect</title>
+    
+    <!-- Libraries -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <!-- EmailJS SDK -->  
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+  (function(){
+     emailjs.init("yDONCYf00_GqwNheL");
+  })();
+</script>
+
+    <style>
+        :root {
+            --bg-dark: #000000;
+            --electric-blue: #2F72FF;
+            --neon-cyan: #40E0FF;
+            --royal-purple: #B16CFF;
+            --soft-white: #FFFFFF;
+
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glass-bg: rgba(10, 10, 15, 0.65);
+            --glass-highlight: rgba(255, 255, 255, 0.03);
+
+            --text-glow: 0 0 15px rgba(64, 224, 255, 0.4);
+            --box-glow: 0 0 30px rgba(47, 114, 255, 0.15);
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--soft-white);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            cursor: none;
+        }
+
+        h1, h2, h3, h4, h5, .font-heading {
+            font-family: 'Space Grotesk', sans-serif;
+            letter-spacing: -0.02em;
+        }
+
+        /* Custom Cursor */
+        #cursor {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 32px;
+            height: 32px;
+            border: 1px solid var(--neon-cyan);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            transition: width 0.3s, height 0.3s, background-color 0.3s, transform 0.1s;
+            mix-blend-mode: difference;
+            box-shadow: 0 0 10px var(--neon-cyan);
+        }
+        #cursor-dot {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 6px;
+            height: 6px;
+            background-color: var(--neon-cyan);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 10000;
+            transform: translate(-50%, -50%);
+        }
+        @media (hover: none) and (pointer: coarse) {
+            #cursor, #cursor-dot { display: none; }
+            body { cursor: auto; }
+        }
+
+        /* Backgrounds */
+        #canvas-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+        }
+        
+        .nebula-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(47, 114, 255, 0.08) 0%, transparent 60%),
+                        radial-gradient(circle at 80% 20%, rgba(177, 108, 255, 0.05) 0%, transparent 40%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .glass-panel {
+            background: rgba(10, 10, 12, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+            position: relative;
+        }
+
+        .glass-card {
+            background: linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        .glass-card:hover {
+            border-color: var(--neon-cyan);
+            background: rgba(47, 114, 255, 0.08);
+            transform: translateY(-5px) scale(1.01);
+            box-shadow: var(--box-glow);
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #fff 30%, var(--neon-cyan) 70%, var(--electric-blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .text-neon {
+            color: var(--neon-cyan);
+            text-shadow: 0 0 10px rgba(64, 224, 255, 0.6);
+        }
+
+        .perspective-container { perspective: 1200px; }
+        .preserve-3d { transform-style: preserve-3d; }
+
+        /* Cube Scene */
+        .cube-scene {
+            width: 280px; height: 280px; position: relative; transform-style: preserve-3d;
+            animation: rotateCube 20s infinite linear;
+        }
+        .cube-face {
+            position: absolute; width: 280px; height: 280px;
+            border: 1px solid rgba(64, 224, 255, 0.3);
+            background: rgba(47, 114, 255, 0.05);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 10px; color: var(--neon-cyan);
+            box-shadow: 0 0 20px rgba(47, 114, 255, 0.1) inset;
+            backdrop-filter: blur(2px);
+        }
+        .face-front  { transform: rotateY(0deg) translateZ(140px); }
+        .face-back   { transform: rotateY(180deg) translateZ(140px); }
+        .face-right  { transform: rotateY(90deg) translateZ(140px); }
+        .face-left   { transform: rotateY(-90deg) translateZ(140px); }
+        .face-top    { transform: rotateX(90deg) translateZ(140px); }
+        .face-bottom { transform: rotateX(-90deg) translateZ(140px); }
+        @keyframes rotateCube {
+            from { transform: rotateX(-15deg) rotateY(0deg); }
+            to { transform: rotateX(-15deg) rotateY(360deg); }
+        }
+
+        /* Orbital System */
+        .orbital-system { position: relative; width: 400px; height: 400px; display: flex; justify-content: center; align-items: center; }
+        .orbit-ring { position: absolute; border: 1px dashed rgba(255, 255, 255, 0.1); border-radius: 50%; animation: spin 10s linear infinite; }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+
+        /* Navigation */
+        .nav-link.active::after {
+            content: ''; position: absolute; bottom: -4px; left: 0; width: 100%; height: 2px;
+            background: linear-gradient(90deg, var(--electric-blue), var(--neon-cyan));
+            box-shadow: 0 0 10px var(--neon-cyan);
+        }
+
+        /* Utilities */
+        .page-section { display: none; opacity: 0; padding-top: 120px; min-height: 100vh; }
+        .page-section.active { display: block; opacity: 1; }
+        .layout-switcher { position: absolute; top: 100px; right: 20px; z-index: 50; display: flex; gap: 10px; }
+        .layout-btn {
+            width: 30px; height: 30px; border: 1px solid var(--glass-border); background: rgba(0,0,0,0.5);
+            color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            cursor: pointer; font-size: 12px; transition: all 0.3s;
+        }
+        .layout-btn.active, .layout-btn:hover { background: var(--electric-blue); border-color: var(--neon-cyan); }
+
+        /* Premium gradient-border cards for services/insights/research */
+        .premium-card {
+            position: relative;
+            border-radius: 1rem;
+            padding: 1px;
+            background: radial-gradient(circle at top left, rgba(64,224,255,0.8), transparent 55%),
+                        radial-gradient(circle at bottom right, rgba(177,108,255,0.8), transparent 55%);
+        }
+        .premium-inner {
+            border-radius: 0.95rem;
+            background: rgba(8, 10, 20, 0.95);
+        }
+
+        .tilt-on-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transform-style: preserve-3d;
+        }
+        .tilt-on-hover:hover {
+            transform: translateY(-6px) rotateX(6deg) rotateY(-4deg);
+            box-shadow: 0 24px 80px rgba(0,0,0,0.6);
+        }
+
+        /* Education layout fixes to prevent overlap */
+        .education-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+        @media (min-width: 1024px) {
+            .education-grid { grid-template-columns: 1fr 2fr; gap: 2.5rem; align-items: start; }
+            /* remove sticky on large screens to avoid overlap with navbar and other sections */
+            .left-info { position: relative; top: 0; }
+        }
+
+        .edu-timeline { display: flex; flex-direction: column; gap: 1.25rem; }
+        .edu-item { padding: 1rem; border-radius: 0.75rem; }
+
+        /* Skills list small */
+        .skill-tag { font-size: 11px; padding: 6px 8px; border-radius: 8px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.04); }
+
+        /* reduce face sizes on narrow screens */
+        @media (max-width: 1024px) {
+            .cube-scene { width: 220px; height: 220px; }
+            .cube-face { width: 220px; height: 220px; }
+        }
+
+        /* small helper for certs */
+        .cert-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; padding: 14px; }
+    </style>
+</head>
+<body class="antialiased selection:bg-cyan-500 selection:text-black">
+
+    <!-- Loader -->
+    <div id="loader" class="fixed inset-0 bg-black z-[100] flex flex-col items-center justify-center transition-opacity duration-1000">
+        <div class="text-4xl md:text-6xl font-bold font-heading tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600 animate-pulse">
+            INITIALIZING
+        </div>
+        <div class="mt-4 w-64 h-1 bg-gray-900 rounded-full overflow-hidden">
+            <div id="loader-bar" class="h-full bg-cyan-400 w-0 transition-all duration-1000"></div>
+        </div>
+        <div class="mt-2 font-mono text-xs text-cyan-500/70">ESTABLISHING SECURE CONNECTION...</div>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div id="cursor"></div>
+    <div id="cursor-dot"></div>
+
+    <!-- Backgrounds -->
+    <canvas id="canvas-bg"></canvas>
+    <div class="nebula-overlay"></div>
+
+    <!-- Navbar -->
+    <nav class="fixed top-0 w-full z-50 glass-panel border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex-shrink-0 cursor-pointer group" onclick="navigateTo('home')">
+                    <span class="font-heading font-bold text-2xl tracking-tighter group-hover:text-cyan-400 transition-colors">
+                        BTM<span class="text-cyan-400 animate-pulse">.</span>AI
+                    </span>
+                </div>
+                <!-- Desktop Nav -->
+                <div class="hidden lg:block">
+                    <div class="ml-10 flex items-baseline space-x-6">
+                        <button onclick="navigateTo('home')" class="nav-link active relative px-1 py-2 text-sm font-medium tracking-wide text-gray-400 hover:text-white transition-colors">HOME</button>
+                        <button onclick="navigateTo('about')" class="nav-link relative px-1 py-2 text-sm font-medium tracking-wide text-gray-400 hover:text-white transition-colors">ABOUT</button>
+                        <button onclick="navigateTo('projects')" class="nav-link relative px-1 py-2 text-sm font-medium tracking-wide text-gray-400 hover:text-white transition-colors">PROJECTS</button>
+                        <button onclick="navigateTo('services')" class="nav-link relative px-1 py-2 text-sm font-medium tracking-wide text-gray-400 hover:text-white transition-colors">SERVICES</button>
+                        <button onclick="navigateTo('skills')" class="nav-link relative px-1 py-2 text-sm font-medium tracking-wide text-gray-400 hover:text-white transition-colors">SKILLS</button>
+                        <button onclick="navigateTo('education')" class="nav-link relative px-1 py-2 text-sm font-medium tracking-wide text-gray-400 hover:text-white transition-colors">EDUCATION</button>
+                        <button onclick="navigateTo('research')" class="nav-link relative px-1 py-2 text-sm font-medium tracking-wide text-gray-400 hover:text-white transition-colors">RESEARCH</button>
+                        <button onclick="navigateTo('insights')" class="nav-link relative px-1 py-2 text-sm font-medium tracking-wide text-gray-400 hover:text-white transition-colors">INSIGHTS</button>
+                        <button onclick="navigateTo('contact')" class="ml-4 px-5 py-2 rounded-sm border border-cyan-500/50 text-cyan-400 hover:bg-cyan-500 hover:text-black transition-all duration-300 text-xs font-bold uppercase tracking-widest shadow-[0_0_15px_rgba(64,224,255,0.1)] hover:shadow-[0_0_20px_rgba(64,224,255,0.4)]">
+                            CONTACT
+                        </button>
+                    </div>
+                </div>
+                <!-- Mobile menu button -->
+                <div class="-mr-2 flex lg:hidden">
+                    <button onclick="toggleMobileMenu()" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white focus:outline-none">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden glass-panel border-t border-white/10 absolute w-full">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 text-center">
+                <button onclick="navigateTo('home')" class="block w-full px-3 py-2 text-base font-medium text-white">HOME</button>
+                <button onclick="navigateTo('about')" class="block w-full px-3 py-2 text-base font-medium text-gray-300">ABOUT</button>
+                <button onclick="navigateTo('projects')" class="block w-full px-3 py-2 text-base font-medium text-gray-300">PROJECTS</button>
+                <button onclick="navigateTo('contact')" class="block w-full px-3 py-2 text-base font-medium text-gray-300">CONTACT</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="relative z-10 w-full min-h-screen">
+
+        <!-- HERO -->
+        <section id="home" class="page-section active flex items-center justify-center relative overflow-hidden h-screen p-0 m-0">
+            <div class="layout-switcher">
+                <div class="layout-btn active" onclick="setHeroLayout(1)" title="Cube Lab">1</div>
+                <div class="layout-btn" onclick="setHeroLayout(2)" title="Orbital Avatar">2</div>
+                <div class="layout-btn" onclick="setHeroLayout(3)" title="Vertical Console">3</div>
+            </div>
+
+            <div class="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center h-full pt-20">
+                
+                <!-- Text Content -->
+                <div class="z-20 space-y-8 order-2 lg:order-1 text-center lg:text-left">
+                    <div class="inline-flex items-center justify-center lg:justify-start space-x-2">
+                        <span class="text-3xl animate-bounce">👋</span>
+                        <h2 class="text-xl md:text-2xl text-gray-400 font-light font-heading tracking-wide">Namaste</h2>
+                    </div>
+                    
+                    <div class="space-y-2">
+                        <h1 class="text-5xl md:text-7xl font-bold font-heading tracking-tight leading-[1.1]">
+                            I'M <span class="text-white">BHANU TEJA</span><br>
+                            <span class="text-neon text-glow">MODEM</span>
+                        </h1>
+                    </div>
+
+                    <!-- Rotating Subtitle -->
+                    <div class="h-8 overflow-hidden relative w-full flex justify-center lg:justify-start">
+                        <div id="rotating-text" class="text-lg md:text-xl text-electric-blue font-mono uppercase tracking-widest transition-transform duration-500 absolute whitespace-nowrap">
+                            AI Full-Stack Developer
+                        </div>
+                    </div>
+
+                    <p class="text-gray-400 max-w-lg mx-auto lg:mx-0 text-lg leading-relaxed font-light border-l-0 lg:border-l-2 lg:border-electric-blue lg:pl-4">
+                        Engineering the next generation of AI. Learning and experimenting with AI to build transparent and meaningful solutions for real-world problems.
+                    </p>
+
+                    <div class="flex flex-wrap justify-center lg:justify-start gap-4 pt-4">
+                        <button onclick="navigateTo('contact')" class="px-8 py-4 bg-electric-blue/10 border border-electric-blue text-electric-blue rounded-sm font-bold hover:bg-electric-blue hover:text-white shadow-[0_0_20px_rgba(47,114,255,0.2)] hover:shadow-[0_0_30px_rgba(47,114,255,0.6)] transition-all duration-300 uppercase tracking-wider text-sm flex items-center gap-2 group">
+                            <i class="fas fa-terminal group-hover:animate-pulse"></i> Hire Me
+                        </button>
+                        <button onclick="navigateTo('projects')" class="px-8 py-4 bg-transparent border border-white/20 text-white rounded-sm font-bold hover:border-white hover:bg-white/5 transition-all duration-300 uppercase tracking-wider text-sm">
+                            View Projects
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Visual Content -->
+                <div id="hero-visual" class="relative z-10 hidden lg:flex justify-center items-center h-full perspective-container order-1 lg:order-2">
+                    
+                    <!-- Layout 1: Cube Lab -->
+                    <div id="hero-layout-1" class="hero-variant transition-opacity duration-500">
+                        <div class="cube-scene">
+                            <div class="cube-face face-front"><i class="fas fa-brain text-5xl mb-2"></i></div>
+                            <div class="cube-face face-back"><i class="fas fa-database text-5xl mb-2"></i></div>
+                            <div class="cube-face face-right"><i class="fas fa-network-wired text-5xl mb-2"></i></div>
+                            <div class="cube-face face-left"><i class="fas fa-code text-5xl mb-2"></i></div>
+                            <div class="cube-face face-top"></div>
+                            <div class="cube-face face-bottom"></div>
+                        </div>
+                        <div class="absolute top-0 right-[-40px] glass-card p-3 rounded-md border-l-2 border-neon-cyan animate-float w-48">
+                            <div class="flex items-center gap-2 mb-1">
+                                <div class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+                                <span class="text-[10px] text-gray-400 uppercase">System Status</span>
+                            </div>
+                            <div class="text-sm font-mono text-white">All Systems Nominal</div>
+                        </div>
+                    </div>
+
+                    <!-- Layout 2: Orbital -->
+                    <div id="hero-layout-2" class="hero-variant hidden transition-opacity duration-500">
+                        <div class="orbital-system">
+                            <div class="relative w-48 h-48 rounded-full border-2 border-neon-cyan bg-black/50 backdrop-blur-md flex items-center justify-center z-10 shadow-[0_0_50px_rgba(64,224,255,0.3)] overflow-hidden">
+                                <img src="https://media.licdn.com/dms/image/v2/D5603AQGcCJ4I-kgSZQ/profile-displayphoto-scale_400_400/B56ZstHIPpJ8Ak-/0/1765988402791?e=1772064000&v=beta&t=f02WcarbBStFkdJdTphmy0z4nsxVYvyfk4IduZQqOBQ">
+                            </div>
+                            <div class="orbit-ring w-64 h-64 border-electric-blue/30" style="animation-duration: 15s;">
+                                <div class="absolute top-0 left-1/2 w-3 h-3 bg-electric-blue rounded-full shadow-[0_0_10px_#2F72FF]"></div>
+                            </div>
+                            <div class="orbit-ring w-80 h-80 border-royal-purple/30" style="animation-duration: 25s; animation-direction: reverse;">
+                                <div class="absolute bottom-0 left-1/2 w-4 h-4 bg-royal-purple rounded-full shadow-[0_0_10px_#B16CFF]"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Layout 3: Vertical Console -->
+                    <div id="hero-layout-3" class="hero-variant hidden transition-opacity duration-500">
+                         <div class="w-[380px] h-[550px] glass-panel rounded-lg border border-white/10 relative overflow-hidden flex flex-col shadow-2xl">
+                            <div class="h-8 bg-white/5 border-b border-white/10 flex items-center px-4 justify-between">
+                                <div class="text-[10px] font-mono text-gray-500">AI_ARCHITECT_TERM_V2</div>
+                                <div class="flex gap-2"><div class="w-2 h-2 rounded-full bg-green-500"></div></div>
+                            </div>
+                            <div class="p-6 flex-1 flex flex-col">
+                                <div class="h-40 w-full mb-4">
+                                    <lottie-player src="https://lottie.host/8d484196-857e-4696-9884-635c057635c6/2s4qX9k16P.json" background="transparent" speed="1" style="width: 100%; height: 100%;" loop autoplay></lottie-player>
+                                </div>
+                                <div class="font-mono text-xs space-y-2 text-gray-300">
+                                    <div class="text-green-400">> import tensorflow as tf</div>
+                                    <div class="text-green-400">> model = build_transformer()</div>
+                                    <div class="text-gray-500">... training epoch 42/100</div>
+                                    <div class="w-full bg-gray-800 h-1 rounded overflow-hidden mt-2">
+                                        <div class="bg-neon-cyan h-full w-[42%] animate-pulse"></div>
+                                    </div>
+                                    <div class="mt-4 p-3 bg-white/5 border border-white/10 rounded">
+                                        <span class="text-electric-blue">Latent Space Analysis:</span><br>
+                                        Optimal convergence detected.
+                                    </div>
+                                </div>
+                            </div>
+                         </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center opacity-50 animate-bounce">
+                <div class="w-[1px] h-10 bg-gradient-to-b from-transparent via-cyan-400 to-transparent"></div>
+            </div>
+        </section>
+
+        <!-- ABOUT -->
+        <section id="about" class="page-section">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                    <div class="lg:col-span-4">
+                        <!-- sticky restored as you wanted (keeps UI you had) -->
+                        <div class="glass-panel p-6 rounded-2xl left-info sticky" style="top:6rem">
+                            <div class="w-32 h-32 mx-auto rounded-full border-2 border-neon-cyan/50 p-1 mb-6 overflow-hidden">
+                                <img src="https://media.licdn.com/dms/image/v2/D5603AQGcCJ4I-kgSZQ/profile-displayphoto-scale_400_400/B56ZstHIPpJ8Ak-/0/1765988402791?e=1772064000&v=beta&t=f02WcarbBStFkdJdTphmy0z4nsxVYvyfk4IduZQqOBQ">
+                            </div>
+                            <h3 class="text-2xl font-bold font-heading text-white">Bhanu Teja Modem</h3>
+                            <p class="text-sm text-gray-400 mb-6">Galiveedu, Andhra Pradesh, India</p>
+                            
+                            <div class="space-y-3 text-left text-sm mb-6">
+                                <div class="flex justify-between border-b border-white/5 pb-2"><span class="text-gray-500">Education</span><span class="text-white">B.Tech CSE (2024–2028)</span></div>
+                                <div class="flex justify-between border-b border-white/5 pb-2"><span class="text-gray-500">GPA</span><span class="text-neon-cyan">9.36 / 10.0</span></div>
+                                <div class="flex justify-between border-b border-white/5 pb-2"><span class="text-gray-500">Native</span><span class="text-white">Telugu</span></div>
+                                <div class="flex justify-between border-b border-white/5 pb-2"><span class="text-gray-500">Internship</span><span class="text-white">Ediglobe (Intern) — Completed</span></div>
+                            </div>
+                            <a href="#certifications" onclick="navigateTo('certifications')" class="block w-full py-3 bg-white/5 border border-white/10 hover:bg-white/10 text-white text-xs font-bold uppercase tracking-widest transition-all mb-4">
+                                <i class="fas fa-certificate mr-2"></i> View Certifications
+                            </a>
+                            <a href="https://drive.google.com/file/d/1XVvj6zk5AS08ZCxsGFrnfcWtWPaZU3W3/view?usp=sharing?usp=sharing&ouid=102569273114969950093&rtpof=true&sd=true" onclick="alert('To View Resume Click Ok')" class="block w-full py-3 bg-white/5 border border-white/10 hover:bg-white/10 text-white text-xs font-bold uppercase tracking-widest transition-all">
+                                <i class="fas fa-download mr-2"></i> Download Resume
+                            </a>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-8 space-y-8">
+                        <div>
+                            <h2 class="text-3xl md:text-5xl font-bold font-heading mb-6">From Curiosity to <span class="text-gradient">Cognitive Systems</span></h2>
+                            <p class="text-gray-400 text-lg leading-relaxed">
+                                I am a goal-oriented problem solver and a strong advocate for <strong>AI ethics, transparency, and explainability</strong>. My journey isn't just about writing code; it's about architecting intelligent systems that can reason, learn, and explain their decisions.
+                            </p>
+                        </div>
+                        <div class="border-l border-white/10 pl-8 space-y-8 relative">
+                            <div class="relative">
+                                <span class="absolute -left-[37px] top-1 w-4 h-4 rounded-full bg-black border-2 border-neon-cyan"></span>
+                                <h4 class="text-xl font-bold text-white">B.Tech in Computer Science Engineering</h4>
+                                <p class="text-electric-blue font-mono text-sm mb-2">2024 – 2028 (Vel Tech Rangarajan Dr. Sagunthala R&D Institute)</p>
+                                <p class="text-gray-400 text-sm">Expected graduation in 2028. Focus on AI, machine learning, distributed systems and data-centric software engineering. Current CGPA: <strong>9.36 / 10.0</strong>.</p>
+                            </div>
+
+                            <div class="relative">
+                                <span class="absolute -left-[37px] top-1 w-4 h-4 rounded-full bg-black border-2 border-royal-purple"></span>
+                                <h4 class="text-xl font-bold text-white">Intermediate (MPC) · Narayana College</h4>
+                                <p class="text-royal-purple font-mono text-sm mb-2">Completed · Year: 2024</p>
+                                <p class="text-gray-400 text-sm">Score: <strong>96.2%</strong> (962 / 1000).</p>
+                            </div>
+
+                            <div class="relative">
+                                <span class="absolute -left-[37px] top-1 w-4 h-4 rounded-full bg-black border-2 border-electric-blue"></span>
+                                <h4 class="text-xl font-bold text-white">Class X · Ravichandra EM School, Galiveedu</h4>
+                                <p class="text-electric-blue font-mono text-sm mb-2">Completed · Year: 2022</p>
+                                <p class="text-gray-400 text-sm">Score: <strong>488 / 600</strong>.</p>
+                            </div>
+
+                            <div class="relative">
+                                <span class="absolute -left-[37px] top-1 w-4 h-4 rounded-full bg-black border-2 border-electric-blue"></span>
+                                <h4 class="text-xl font-bold text-white">Self-Directed Learning</h4>
+                                <p class="text-electric-blue font-mono text-sm mb-2">Ongoing</p>
+                                <p class="text-gray-400 text-sm">Continuous learning through MOOCs, hackathons and side projects in full-stack engineering, MLOps and large language models.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- EDUCATION (separate page-section) -->
+        <section id="education" class="page-section">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+                <h2 class="text-3xl md:text-5xl font-bold font-heading mb-8">Academic <span class="text-gradient">Trajectory</span></h2>
+
+                <div class="education-grid">
+                    <div class="left-info">
+                        <div class="glass-panel p-6 rounded-2xl">
+                            <h3 class="text-xl font-bold mb-2">Summary</h3>
+                            <p class="text-gray-300">Structured learning in computer science combined with self-driven experimentation in AI, systems and data. Expected B.Tech completion in 2028 with strong academic performance and practical project experience.</p>
+
+                            <div class="mt-6 grid grid-cols-3 gap-3 text-center text-xs">
+                                <div class="glass-panel rounded-xl py-4">
+                                    <div class="text-2xl font-heading text-neon-cyan">9.36</div>
+                                    <div class="text-gray-500 uppercase mt-1">CGPA</div>
+                                </div>
+                                <div class="glass-panel rounded-xl py-4">
+                                    <div class="text-2xl font-heading text-white">20+</div>
+                                    <div class="text-gray-500 uppercase mt-1">Courses</div>
+                                </div>
+                                <div class="glass-panel rounded-xl py-4">
+                                    <div class="text-2xl font-heading text-royal-purple">3</div>
+                                    <div class="text-gray-500 uppercase mt-1">Domains</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="glass-panel p-6 rounded-2xl mt-6">
+                            <h4 class="font-bold mb-3">Self-Directed Learning</h4>
+                            <p class="text-sm text-gray-300">Continuous learning via MOOCs, hackathons and side projects on full-stack, MLOps and LLMs.</p>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="edu-item glass-panel p-5 mb-4">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <h3 class="font-bold text-lg">B.Tech in Computer Science Engineering</h3>
+                                    <p class="text-sm text-electric-blue">Vel Tech Rangarajan Dr. Sagunthala R&D Institute — 2024 – 2028 (Expected)</p>
+                                </div>
+                                <div class="text-sm text-gray-400">CGPA: <strong class="text-neon-cyan">9.36</strong></div>
+                            </div>
+                            <p class="text-sm text-gray-300 mt-3">Focus: AI, machine learning, distributed systems and data-centric engineering.</p>
+                        </div>
+
+                        <div class="edu-item glass-panel p-5 mb-4">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <h3 class="font-bold text-lg">Intermediate (MPC)</h3>
+                                    <p class="text-sm text-royal-purple">Narayana College — Completed 2024</p>
+                                </div>
+                                <div class="text-sm text-gray-400">Score: <strong class="text-white">96.2%</strong></div>
+                            </div>
+                            <p class="text-sm text-gray-300 mt-3">Interpreted as 962/1000 (96.2%). Strong mathematics foundation for model building.</p>
+                        </div>
+
+                        <div class="edu-item glass-panel p-5">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <h3 class="font-bold text-lg">Class X</h3>
+                                    <p class="text-sm text-electric-blue">Ravichandra EM School, Galiveedu — Completed 2022</p>
+                                </div>
+                                <div class="text-sm text-gray-400">Score: <strong class="text-white">488 / 600</strong></div>
+                            </div>
+                            <p class="text-sm text-gray-300 mt-3">Early foundations in science and mathematics.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SERVICES (includes Java Full-Stack & Web Dev) -->
+        <section id="services" class="page-section">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+                <div class="flex items-center justify-between gap-4 mb-12 flex-wrap">
+                    <h2 class="text-3xl md:text-5xl font-bold font-heading">
+                        Technical <span class="text-gradient">Arsenal</span>
+                    </h2>
+                    <p class="text-xs md:text-sm font-mono text-gray-400 uppercase tracking-[0.25em]">
+                        STACK · TOOLING · DELIVERY
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+                    <!-- Core AI -->
+                    <div class="premium-card services-card">
+                        <div class="premium-inner glass-panel rounded-2xl p-6 tilt-on-hover">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="h-10 w-10 rounded-full bg-electric-blue/10 flex items-center justify-center text-neon-cyan">
+                                    <i class="fas fa-brain"></i>
+                                </div>
+                                <span class="text-[10px] font-mono text-gray-400 uppercase">Model-first</span>
+                            </div>
+                            <h3 class="text-lg font-bold mb-3">Core AI & DL</h3>
+                            <p class="text-xs text-gray-400 mb-4">
+                                Architecting deep learning pipelines for vision, language and multi-modal problems.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2 py-1 text-[10px] bg-white/5 rounded border border-white/10">PyTorch</span>
+                                <span class="px-2 py-1 text-[10px] bg-white/5 rounded border border-white/10">TensorFlow</span>
+                                <span class="px-2 py-1 text-[10px] bg-white/5 rounded border border-white/10">LLMs · RAG</span>
+                                <span class="px-2 py-1 text-[10px] bg-white/5 rounded border border-white/10">YOLO</span>
+                                <span class="px-2 py-1 text-[10px] bg-white/5 rounded border border-white/10">RL</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- MLOps -->
+                    <div class="premium-card services-card">
+                        <div class="premium-inner glass-panel rounded-2xl p-6 tilt-on-hover">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="h-10 w-10 rounded-full bg-electric-blue/10 flex items-center justify-center text-electric-blue">
+                                    <i class="fas fa-server"></i>
+                                </div>
+                                <span class="text-[10px] font-mono text-gray-400 uppercase">Production</span>
+                            </div>
+                            <h3 class="text-lg font-bold mb-3">MLOps & Cloud</h3>
+                            <p class="text-xs text-gray-400 mb-4">
+                                From notebook to scalable APIs with observability and versioning built-in.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2 py-1 text-[10px] bg-white/5 rounded border border-white/10">Docker</span>
+                                <span class="px-2 py-1 text-[10px] bg-white/5 rounded border border-white/10">Kubernetes</span>
+                                <span class="px-2 py-1 text-[10px] bg-white/5 rounded border border-white/10">Vertex AI</span>
+                                <span class="px-2 py-1 text-[10px] bg-white/5 rounded border border-white/10">SageMaker</span>
+                                <span class="px-2 py-1 text-[10px] bg-white/5 rounded border border-white/10">MLflow</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Java Full-Stack service -->
+                    <div class="premium-card services-card">
+                        <div class="premium-inner glass-panel rounded-2xl p-6 tilt-on-hover">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="h-10 w-10 rounded-full bg-royal-purple/10 flex items-center justify-center text-royal-purple">
+                                    <i class="fab fa-java"></i>
+                                </div>
+                                <span class="text-[10px] font-mono text-gray-400 uppercase">Enterprise</span>
+                            </div>
+                            <h3 class="text-lg font-bold mb-3">Java Full-Stack</h3>
+                            <p class="text-xs text-gray-400 mb-4">
+                                Building robust backend services and APIs with Spring Boot, Hibernate and integrating with React frontend.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2 py-1 text-[10px] bg-white/5 rounded border border-white/10">Spring Boot</span>
+                                <span class="px-2 py-1 text-[10px] bg-white/5 rounded border border-white/10">Hibernate</span>
+                                <span class="px-2 py-1 text-[10px] bg-white/5 rounded border border-white/10">REST APIs</span>
+                                <span class="px-2 py-1 text-[10px] bg-white/5 rounded border border-white/10">MySQL/Postgres</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Web Development (HTML/CSS/JS) -->
+                    <div class="premium-card services-card">
+                        <div class="premium-inner glass-panel rounded-2xl p-6 tilt-on-hover">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="h-10 w-10 rounded-full bg-white/10 flex items-center justify-center text-white">
+                                    <i class="fas fa-code"></i>
+                                </div>
+                                <span class="text-[10px] font-mono text-gray-400 uppercase">Frontend</span>
+                            </div>
+                            <h3 class="text-lg font-bold mb-3">Web Development</h3>
+                            <p class="text-xs text-gray-400 mb-4">
+                                Responsive and accessible websites with semantic HTML, modern CSS and interactive JavaScript — optimized for performance.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2 py-1 text-[10px] bg-white/5 rounded border border-white/10">HTML</span>
+                                <span class="px-2 py-1 text-[10px] bg-white/5 rounded border border-white/10">CSS</span>
+                                <span class="px-2 py-1 text-[10px] bg-white/5 rounded border border-white/10">JavaScript</span>
+                                <span class="px-2 py-1 text-[10px] bg-white/5 rounded border border-white/10">Responsive</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Data & XAI -->
+                    <div class="premium-card services-card">
+                        <div class="premium-inner glass-panel rounded-2xl p-6 tilt-on-hover">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="h-10 w-10 rounded-full bg-royal-purple/10 flex items-center justify-center text-royal-purple">
+                                    <i class="fas fa-chart-pie"></i>
+                                </div>
+                                <span class="text-[10px] font-mono text-gray-400 uppercase">Explain</span>
+                            </div>
+                            <h3 class="text-lg font-bold mb-3">Data & XAI</h3>
+                            <p class="text-xs text-gray-400 mb-4">
+                                Building decision systems that justify every prediction with interpretable signals.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2 py-1 text-[10px] bg-white/5 rounded border border-white/10">Pandas</span>
+                                <span class="px-2 py-1 text-[10px] bg-white/5 rounded border border-white/10">Power BI</span>
+                                <span class="px-2 py-1 text-[10px] bg-white/5 rounded border border-white/10">SHAP/LIME</span>
+                                <span class="px-2 py-1 text-[10px] bg-white/5 rounded border border-white/10">SQL/NoSQL</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Full Stack (existing) -->
+                    <div class="premium-card services-card">
+                        <div class="premium-inner glass-panel rounded-2xl p-6 tilt-on-hover">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="h-10 w-10 rounded-full bg-white/10 flex items-center justify-center text-white">
+                                    <i class="fas fa-layer-group"></i>
+                                </div>
+                                <span class="text-[10px] font-mono text-gray-400 uppercase">Interface</span>
+                            </div>
+                            <h3 class="text-lg font-bold mb-3">Full Stack Delivery</h3>
+                            <p class="text-xs text-gray-400 mb-4">
+                                Shipping AI into real products with responsive, latency-aware UX flows.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2 py-1 text-[10px] bg-white/5 rounded border border-white/10">FastAPI</span>
+                                <span class="px-2 py-1 text-[10px] bg-white/5 rounded border border-white/10">Gradio</span>
+                                <span class="px-2 py-1 text-[10px] bg-white/5 rounded border border-white/10">React</span>
+                                <span class="px-2 py-1 text-[10px] bg-white/5 rounded border border-white/10">Spring Boot</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SKILLS -->
+        <section id="skills" class="page-section">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+                <div class="flex items-center justify-between gap-4 mb-8 flex-wrap">
+                    <h2 class="text-3xl md:text-5xl font-bold font-heading">Technical <span class="text-gradient">Skills</span></h2>
+                    <p class="text-xs md:text-sm font-mono text-gray-400 uppercase tracking-[0.25em]">Capabilities · Tools · Soft Skills</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Programming & Software Engineering -->
+                    <div class="glass-panel rounded-2xl p-6 tilt-on-hover">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="h-10 w-10 rounded-full bg-electric-blue/10 flex items-center justify-center text-neon-cyan"><i class="fas fa-code"></i></div>
+                            <h3 class="text-lg font-bold">Programming & Software Engineering</h3>
+                        </div>
+                        <p class="text-sm text-gray-300 mb-3">Expertise in building maintainable, testable and scalable software systems.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">Java</span>
+                            <span class="skill-tag">Node.js</span>
+                            <span class="skill-tag">Microservices</span>
+                            <span class="skill-tag">API Design</span>
+                            <span class="skill-tag">Design Patterns</span>
+                            <span class="skill-tag">Java Full-Stack</span>
+                            <span class="skill-tag">HTML</span>
+                            <span class="skill-tag">CSS</span>
+                            <span class="skill-tag">JavaScript</span>
+                        </div>
+                    </div>
+
+                    <!-- Machine Learning & Deep Learning -->
+                    <div class="glass-panel rounded-2xl p-6 tilt-on-hover">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="h-10 w-10 rounded-full bg-royal-purple/10 flex items-center justify-center text-royal-purple"><i class="fas fa-brain"></i></div>
+                            <h3 class="text-lg font-bold">Machine Learning & Deep Learning</h3>
+                        </div>
+                        <p class="text-sm text-gray-300 mb-3">Model design, training, evaluation and deployment for language and vision tasks.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-tag">Neural Networks</span>
+                            <span class="skill-tag">NLP</span>
+                            <span class="skill-tag">Computer Vision</span>
+                            <span class="skill-tag">Reinforcement Learning</span>
+                            <span class="skill-tag">Model Evaluation</span>
+                        </div>
+                    </div>
+
+                    <!-- Data Engineering -->
+                    <div class="glass-panel rounded-2xl p-6 tilt-on-hover">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="h-10 w-10 rounded-full bg-electric-blue/10 flex items-center justify-center text-electric-blue"><i class="fas fa-database"></i></div>
+                            <h3 class="text-lg font-bold">Data Engineering</h3>
+                        </div>
+                        <p class="text-sm text-gray-300 mb-3">ETL, data lakes and pipeline reliability for production ML.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-tag">ETL Pipelines</span>
+                            <span class="skill-tag">SQL</span>
+                            <span class="skill-tag">NoSQL</span>
+                            <span class="skill-tag">Big Data</span>
+                        </div>
+                    </div>
+
+                    <!-- Cloud Platforms -->
+                    <div class="glass-panel rounded-2xl p-6 tilt-on-hover">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="h-10 w-10 rounded-full bg-neon-cyan/10 flex items-center justify-center text-neon-cyan"><i class="fas fa-cloud"></i></div>
+                            <h3 class="text-lg font-bold">Cloud Platforms</h3>
+                        </div>
+                        <p class="text-sm text-gray-300 mb-3">Deploy, scale and monitor AI systems on cloud providers.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-tag">AWS</span>
+                            <span class="skill-tag">Azure</span>
+                            <span class="skill-tag">Google Cloud</span>
+                            <span class="skill-tag">Serverless</span>
+                        </div>
+                    </div>
+
+                    <!-- AI Frameworks & Tools -->
+                    <div class="glass-panel rounded-2xl p-6 tilt-on-hover">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="h-10 w-10 rounded-full bg-white/10 flex items-center justify-center text-white"><i class="fas fa-toolbox"></i></div>
+                            <h3 class="text-lg font-bold">AI Frameworks & Tools</h3>
+                        </div>
+                        <p class="text-sm text-gray-300 mb-3">Hands-on with popular ML libraries and tooling.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-tag">TensorFlow</span>
+                            <span class="skill-tag">PyTorch</span>
+                            <span class="skill-tag">Keras</span>
+                            <span class="skill-tag">Scikit-learn</span>
+                        </div>
+                    </div>
+
+                    <!-- MLOps & DevOps -->
+                    <div class="glass-panel rounded-2xl p-6 tilt-on-hover">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="h-10 w-10 rounded-full bg-electric-blue/10 flex items-center justify-center text-neon-cyan"><i class="fas fa-cogs"></i></div>
+                            <h3 class="text-lg font-bold">MLOps & DevOps</h3>
+                        </div>
+                        <p class="text-sm text-gray-300 mb-3">Automation, CI/CD, model versioning and monitoring.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-tag">Docker</span>
+                            <span class="skill-tag">Kubernetes</span>
+                            <span class="skill-tag">CI/CD</span>
+                            <span class="skill-tag">Model Monitoring</span>
+                        </div>
+                    </div>
+
+                    <!-- Cybersecurity & Soft Skills -->
+                    <div class="glass-panel rounded-2xl p-6 tilt-on-hover">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="h-10 w-10 rounded-full bg-royal-purple/10 flex items-center justify-center text-royal-purple"><i class="fas fa-shield-alt"></i></div>
+                            <h3 class="text-lg font-bold">Cybersecurity & Soft Skills</h3>
+                        </div>
+                        <p class="text-sm text-gray-300 mb-3">Secure, fair and compliant system design plus leadership skills.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-tag">AI Safety</span>
+                            <span class="skill-tag">Ethics</span>
+                            <span class="skill-tag">Strategic Thinking</span>
+                            <span class="skill-tag">Communication</span>
+                            <span class="skill-tag">Leadership</span>
+                            <span class="skill-tag">Problem Solving</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJECTS -->
+        <section id="projects" class="page-section">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+                <h2 class="text-3xl md:text-5xl font-bold font-heading mb-12">Featured <span class="text-gradient">Projects</span></h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="glass-card rounded-2xl p-6 group cursor-pointer hover:bg-white/5 transition-all">
+                        <div class="h-40 bg-gradient-to-br from-gray-800 to-black rounded-lg mb-6 flex items-center justify-center border border-white/5">
+                            <i class="fas fa-project-diagram text-4xl text-cyan-400"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-white">Hierarchical Neural Simulator for Quantum Processor Design</h3>
+                        <p class="text-sm text-gray-400 mb-4 line-clamp-4">Using ML surrogates to model beyond-CMOS primitives (e.g., superconducting operations) in a differentiable pipeline — enabling efficient design-space search for new quantum hardware building blocks.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-[10px] px-2 py-1 bg-white/10 rounded">Differentiable Surrogates</span>
+                            <span class="text-[10px] px-2 py-1 bg-white/10 rounded">Physics-Informed ML</span>
+                            <span class="text-[10px] px-2 py-1 bg-white/10 rounded">JAX/PyTorch</span>
+                        </div>
+                    </div>
+
+                    <div class="glass-card rounded-2xl p-6 group cursor-pointer hover:bg-white/5 transition-all">
+                        <div class="h-40 bg-gradient-to-br from-gray-800 to-black rounded-lg mb-6 flex items-center justify-center border border-white/5">
+                            <i class="fas fa-city text-4xl text-royal-purple"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-white">Agentic AI for Dynamic Urban Symbiosis</h3>
+                        <p class="text-sm text-gray-400 mb-4 line-clamp-4">Multi-agent RL system where autonomous agents negotiate real-time building adaptations (façade, HVAC, shared spaces) based on weather, traffic and biodiversity inputs to maximize comfort, resilience and ecology.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-[10px] px-2 py-1 bg-white/10 rounded">Multi-Agent RL</span>
+                            <span class="text-[10px] px-2 py-1 bg-white/10 rounded">Digital Twins</span>
+                            <span class="text-[10px] px-2 py-1 bg-white/10 rounded">Edge Orchestration</span>
+                        </div>
+                    </div>
+
+                    <div class="glass-card rounded-2xl p-6 group cursor-pointer hover:bg-white/5 transition-all">
+                        <div class="h-40 bg-gradient-to-br from-gray-800 to-black rounded-lg mb-6 flex items-center justify-center border border-white/5">
+                            <i class="fas fa-shapes text-4xl text-electric-blue"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-white">Emotion-aware Generative Architecture Engine</h3>
+                        <p class="text-sm text-gray-400 mb-4 line-clamp-4">Fusing affective computing with diffusion models to evolve spatial structures from user mood data — producing personalized, non-Euclidean architectural layouts.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-[10px] px-2 py-1 bg-white/10 rounded">Diffusion Models</span>
+                            <span class="text-[10px] px-2 py-1 bg-white/10 rounded">Affective Computing</span>
+                            <span class="text-[10px] px-2 py-1 bg-white/10 rounded">Generative Design</span>
+                        </div>
+                    </div>
+
+                    <div class="glass-card rounded-2xl p-6 group cursor-pointer hover:bg-white/5 transition-all">
+                        <div class="h-40 bg-gradient-to-br from-gray-800 to-black rounded-lg mb-6 flex items-center justify-center border border-white/5">
+                            <i class="fas fa-users-cog text-4xl text-royal-purple"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-white">Self-optimizing NPC Ecosystem for Procedural Worlds</h3>
+                        <p class="text-sm text-gray-400 mb-4 line-clamp-4">Integrating LLMs with Graph Neural Networks to create emergent social dynamics for NPCs — a self-optimizing ecosystem that produces believable interactions and narratives.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-[10px] px-2 py-1 bg-white/10 rounded">GNNs</span>
+                            <span class="text-[10px] px-2 py-1 bg-white/10 rounded">LLM Integration</span>
+                            <span class="text-[10px] px-2 py-1 bg-white/10 rounded">Procedural Content</span>
+                        </div>
+                    </div>
+
+                    <div class="glass-card rounded-2xl p-6 group cursor-pointer hover:bg-white/5 transition-all">
+                        <div class="h-40 bg-gradient-to-br from-gray-800 to-black rounded-lg mb-6 flex items-center justify-center border border-white/5">
+                            <i class="fas fa-x-ray text-4xl text-red-400"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-white">Medical Image Analysis</h3>
+                        <p class="text-sm text-gray-400 mb-4 line-clamp-3">Analyzing X-rays, MRIs, and CT scans to detect pathologies (pneumonia, tumors) using CNNs and segmentation pipelines; explainable outputs for clinicians.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-[10px] px-2 py-1 bg-white/10 rounded">U-Net</span>
+                            <span class="text-[10px] px-2 py-1 bg-white/10 rounded">Explainability</span>
+                        </div>
+                    </div>
+
+                    <div class="glass-card rounded-2xl p-6 group cursor-pointer hover:bg-white/5 transition-all">
+                        <div class="h-40 bg-gradient-to-br from-gray-800 to-black rounded-lg mb-6 flex items-center justify-center border border-white/5">
+                            <i class="fas fa-user-secret text-4xl text-yellow-400"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-white">Advanced Fake Content Detection</h3>
+                        <p class="text-sm text-gray-400 mb-4 line-clamp-3">Detection pipelines for DeepFakes (video), fake audio, and deceptive reviews — combining temporal forensics, spectral features and multimodal fusion.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-[10px] px-2 py-1 bg-white/10 rounded">Temporal Forensics</span>
+                            <span class="text-[10px] px-2 py-1 bg-white/10 rounded">Multimodal</span>
+                        </div>
+                    </div>
+
+                    <div class="glass-card rounded-2xl p-6 group cursor-pointer hover:bg-white/5 transition-all">
+                        <div class="h-40 bg-gradient-to-br from-gray-800 to-black rounded-lg mb-6 flex items-center justify-center border border-white/5">
+                            <i class="fas fa-helmet-safety text-4xl text-green-400"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-white">Intelligent Disaster & Emergency Management</h3>
+                        <p class="text-sm text-gray-400 mb-4 line-clamp-3">AI-driven systems for early warning and resource optimization using sensor fusion (social media, remote sensing, IoT) and optimization solvers for allocation.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-[10px] px-2 py-1 bg-white/10 rounded">Sensor Fusion</span>
+                            <span class="text-[10px] px-2 py-1 bg-white/10 rounded">Optimization</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- CERTIFICATIONS -->
+        <section id="certifications" class="page-section">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+                <div class="flex items-center justify-between gap-4 mb-12 flex-wrap">
+                    <h2 class="text-3xl md:text-5xl font-bold font-heading">Key <span class="text-gradient">Certifications</span></h2>
+                    <p class="text-xs md:text-sm font-mono text-gray-400 uppercase tracking-[0.25em]">Internship · Verified Certificates</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="cert-card">
+                        <div class="flex items-start gap-3">
+                            <i class="fas fa-certificate text-2xl text-neon-cyan"></i>
+                            <div>
+                                <div class="text-sm font-bold">Machine Learning</div>
+                                <div class="text-xs text-gray-400">Issued by Ediglobe — 2025</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="cert-card">
+                        <div class="flex items-start gap-3">
+                            <i class="fas fa-certificate text-2xl text-royal-purple"></i>
+                            <div>
+                                <div class="text-sm font-bold">Internship in the Role of ML</div>
+                                <div class="text-xs text-gray-400">Issued by Ediglobe — 2025</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="cert-card">
+                        <div class="flex items-start gap-3">
+                            <i class="fas fa-certificate text-2xl text-electric-blue"></i>
+                            <div>
+                                <div class="text-sm font-bold">GenAi</div>
+                                <div class="text-xs text-gray-400">Issued by AWS — 2026</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="cert-card">
+                        <div class="flex items-start gap-3">
+                            <i class="fas fa-certificate text-2xl text-white"></i>
+                            <div>
+                                <div class="text-sm font-bold">AI Ethics & Explainability</div>
+                                <div class="text-xs text-gray-400">Issued by Great Learning — 2026</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 flex gap-4">
+                    <a href="#" onclick="alert(' To View Certificates Contact Me');" class="px-6 py-3 bg-electric-blue/20 border border-electric-blue text-electric-blue rounded font-bold text-sm hover:bg-electric-blue hover:text-white transition-all">View Certifications</a>
+                    <a href="#contact" onclick="navigateTo('contact')" class="px-6 py-3 bg-transparent border border-white/20 text-white rounded font-bold text-sm hover:bg-white/10 transition-all">Contact About Verification</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- RESEARCH (unchanged but ensured present) -->
+        <section id="research" class="page-section">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch">
+                    <div class="lg:col-span-7">
+                        <div class="premium-card research-card h-full">
+                            <div class="premium-inner glass-panel p-8 md:p-10 rounded-2xl relative overflow-hidden">
+                                <div class="absolute -right-20 -top-20 w-64 h-64 bg-royal-purple/20 rounded-full blur-3xl pointer-events-none"></div>
+                                <div class="absolute -left-10 bottom-0 w-40 h-40 bg-electric-blue/20 rounded-full blur-3xl pointer-events-none"></div>
+
+                                <div class="relative z-10 space-y-6">
+                                    <div class="flex items-center justify-between gap-4 flex-wrap">
+                                        <div class="flex items-center gap-3">
+                                            <div class="h-10 w-10 rounded-full bg-royal-purple/20 flex items-center justify-center text-royal-purple">
+                                                <i class="fas fa-flask text-xl"></i>
+                                            </div>
+                                            <div>
+                                                <p class="text-xs font-mono text-royal-purple uppercase tracking-[0.2em]">Research Track</p>
+                                                <h2 class="text-2xl md:text-3xl font-bold font-heading">Multilingual XAI for Governance</h2>
+                                            </div>
+                                        </div>
+                                        <span class="text-[10px] md:text-xs font-mono text-gray-400 uppercase">In Progress</span>
+                                    </div>
+
+                                    <div class="space-y-3">
+                                        <p class="text-sm md:text-base text-gray-300">
+                                            Designing a multilingual Explainable AI framework for public grievance redressal that can justify every recommendation across Indian languages in a policy-aligned manner.
+                                        </p>
+                                        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-[10px] md:text-xs">
+                                            <div class="glass-panel rounded-lg py-2 px-3 flex flex-col">
+                                                <span class="text-gray-500 uppercase tracking-[0.18em] mb-1">Focus</span>
+                                                <span class="text-white">Fairness & Transparency</span>
+                                            </div>
+                                            <div class="glass-panel rounded-lg py-2 px-3 flex flex-col">
+                                                <span class="text-gray-500 uppercase tracking-[0.18em] mb-1">Stack</span>
+                                                <span class="text-white">LLMs · XAI · RAG</span>
+                                            </div>
+                                            <div class="glass-panel rounded-lg py-2 px-3 flex flex-col">
+                                                <span class="text-gray-500 uppercase tracking-[0.18em] mb-1">Domain</span>
+                                                <span class="text-white">E-Governance</span>
+                                            </div>
+                                            <div class="glass-panel rounded-lg py-2 px-3 flex flex-col">
+                                                <span class="text-gray-500 uppercase tracking-[0.18em] mb-1">Status</span>
+                                                <span class="text-neon-cyan">Prototype</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex flex-wrap gap-4">
+                                        <button class="px-6 py-3 bg-royal-purple/30 border border-royal-purple text-white rounded font-bold text-xs md:text-sm hover:bg-royal-purple hover:border-royal-purple/80 transition-all flex items-center gap-2">
+                                            <i class="fas fa-file-alt"></i> To View Research Paper Contact Me
+                                        </button>
+                                        <button class="px-6 py-3 bg-transparent border border-white/20 text-white rounded font-bold text-xs md:text-sm hover:bg-white/10 transition-all flex items-center gap-2">
+                                            <i class="fas fa-code-branch"></i> .....
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Research sidebar -->
+                    <div class="lg:col-span-5 space-y-4">
+                        <div class="glass-panel rounded-2xl p-5">
+                            <p class="text-xs font-mono text-gray-400 uppercase tracking-[0.2em] mb-3">
+                                Research Signals
+                            </p>
+                            <ul class="space-y-3 text-sm text-gray-300">
+                                <li class="flex gap-3">
+                                    <span class="mt-1 h-1 w-6 rounded bg-neon-cyan"></span>
+                                    Exploring how explanation templates change trust for non-technical citizens.
+                                </li>
+                                <li class="flex gap-3">
+                                    <span class="mt-1 h-1 w-6 rounded bg-royal-purple"></span>
+                                    Benchmarking LLM reasoning consistency across English, Telugu and Hindi inputs.
+                                </li>
+                                <li class="flex gap-3">
+                                    <span class="mt-1 h-1 w-6 rounded bg-electric-blue"></span>
+                                    Mapping grievance categories to transparent decision paths for administrators.
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="glass-panel rounded-2xl p-5">
+                            <p class="text-xs font-mono text-gray-400 uppercase tracking-[0.2em] mb-3">
+                                Open to Collaboration
+                            </p>
+                            <p class="text-sm text-gray-300 mb-3">
+                                Interested in co-authoring work on XAI for public infrastructure, edge-AI, and multilingual LLM evaluation.
+                            </p>
+                            <button onclick="navigateTo('contact')" class="px-5 py-2 rounded-sm border border-neon-cyan/60 text-neon-cyan text-xs font-bold uppercase tracking-[0.2em] hover:bg-neon-cyan hover:text-black transition-all">
+                                Pitch a Collaboration
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- INSIGHTS -->
+        <section id="insights" class="page-section">
+            <div class="max-w-7xl mx-auto px-4 py-20">
+                <div class="flex items-center justify-between gap-4 mb-10 flex-wrap">
+                    <h2 class="text-3xl md:text-5xl font-bold font-heading">Latest <span class="text-gradient">Insights</span></h2>
+                    <span class="text-xs font-mono text-gray-400 uppercase tracking-[0.2em]">Thoughts · Notes · Experiments</span>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <article class="premium-card insight-card">
+                        <div class="premium-inner glass-card p-6 rounded-2xl cursor-pointer tilt-on-hover">
+                            <div class="flex items-center justify-between mb-3">
+                                <div class="text-xs font-mono text-neon-cyan">ETHICS</div>
+                                <span class="text-[10px] text-gray-500">4 min read</span>
+                            </div>
+                            <h3 class="text-lg font-bold mb-2">Designing XAI for Citizens</h3>
+                            <p class="text-sm text-gray-400 mb-4">
+                                Practical methods to convert model explanations into short, human-readable templates that help non-technical citizens understand automated decisions.
+                            </p>
+                            <a href="https://dl.acm.org/doi/full/10.1145/3708319.3733707"
+   			       target="_blank"
+                               class="text-xs text-white/90 underline underline-offset-4">
+                               Read Note
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="premium-card insight-card">
+                        <div class="premium-inner glass-card p-6 rounded-2xl cursor-pointer tilt-on-hover">
+                            <div class="flex items-center justify-between mb-3">
+                                <div class="text-xs font-mono text-electric-blue">LLMs</div>
+                                <span class="text-[10px] text-gray-500">6 min read</span>
+                            </div>
+                            <h3 class="text-lg font-bold mb-2">Practical Fine-Tuning Patterns</h3>
+                            <p class="text-sm text-gray-400 mb-4">
+                                Notes on data curation, LoRA, efficient fine-tuning and evaluation metrics for domain-specific language models in low-resource languages.
+                            </p>
+                            <a href="https://medium.com/@raghavsharma6002/lora-and-beyond-a-practical-guide-to-fine-tuning-large-language-models-691f87310e80"
+                               target="_blank"
+                               class="text-xs text-white/90 underline underline-offset-4">
+                               Read Note
+                            </a>
+
+                        </div>
+                    </article>
+
+                    <article class="premium-card insight-card">
+                        <div class="premium-inner glass-card p-6 rounded-2xl cursor-pointer tilt-on-hover">
+                            <div class="flex items-center justify-between mb-3">
+                                <div class="text-xs font-mono text-royal-purple">EDGE AI</div>
+                                <span class="text-[10px] text-gray-500">5 min read</span>
+                            </div>
+                            <h3 class="text-lg font-bold mb-2">Deploying Vision Models on Edge</h3>
+                            <p class="text-sm text-gray-400 mb-4">
+                                Experiments in quantization and pruning: trade-offs between latency and accuracy when running YOLO-derived models on low-power boards.
+                            </p>
+                            <a href="https://www.fabricionarcizo.com/cvpr2025-edge-ai-in-action/"
+                               target="_blank"
+                               class="text-xs text-white/90 underline underline-offset-4">
+                               Read Note
+                            </a>
+
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section id="contact" class="page-section">
+            <div class="max-w-7xl mx-auto px-4 py-20 flex flex-col items-center">
+                <div class="w-full max-w-4xl glass-panel p-8 md:p-12 rounded-2xl">
+                    <h2 class="text-3xl md:text-5xl font-bold font-heading mb-8 text-center">Let's <span class="text-gradient">Collaborate</span></h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                        <div class="space-y-6">
+                            <p class="text-gray-400">Seeking roles in AI/ML Engineering. Whether you have a job opportunity or a research idea, signal me.</p>
+                            <div class="space-y-4 font-mono text-sm">
+                                <div class="flex items-center gap-3"><i class="fas fa-envelope text-neon-cyan"></i> modembhanu2007@gmail.com</div>
+                                <div class="flex items-center gap-3"><i class="fas fa-phone text-green-400"></i> +91 91006 26094</div>
+                                <div class="flex items-center gap-3"><i class="fas fa-map-marker-alt text-royal-purple"></i> Galiveedu, AP, India - 516267</div>
+                            </div>
+                        </div>
+                        <form id="contact-form" class="space-y-4">
+                            <input type="text" name="user_name" placeholder="Name" class="w-full bg-black/40 border border-white/10 rounded p-3 text-white focus:border-neon-cyan outline-none transition-colors" required>
+                            <input type="email" name="user_email" placeholder="Email" class="w-full bg-black/40 border border-white/10 rounded p-3 text-white focus:border-neon-cyan outline-none transition-colors" required>
+                            <textarea name="message" placeholder="Message" class="w-full bg-black/40 border border-white/10 rounded p-3 text-white focus:border-neon-cyan outline-none transition-colors h-32" required></textarea>
+                            <button type="submit" class="w-full py-3 bg-gradient-to-r from-electric-blue to-purple-600 rounded font-bold text-white shadow-lg hover:shadow-cyan-500/30 transition-all">SEND MESSAGE</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="py-8 border-t border-white/5 bg-black text-center relative z-10">
+        <div class="h-[1px] w-full bg-gradient-to-r from-transparent via-electric-blue to-transparent absolute top-0 opacity-50"></div>
+        <p class="text-gray-600 text-xs font-mono">&copy; 2025 Bhanu Teja Modem. All rights reserved.</p>
+    </footer>
+    <script>
+        // EmailJS placeholder
+        // === EMAILJS FIXED VERSION ===
+window.addEventListener("load", function () {
+    const form = document.getElementById("contact-form");
+
+    if (!form) {
+        console.error("Contact form not found!");
+        return;
+    }
+
+    form.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        if (typeof emailjs === "undefined") {
+            alert("EmailJS not loaded. Check your internet and refresh.");
+            console.error("EmailJS not loaded");
+            return;
+        }
+
+        emailjs.sendForm("service_a8aum0o", "template_gnme08l", this)
+            .then(function () {
+                alert("Thanks! I’ll get back to you soon.");
+                form.reset();
+            })
+            .catch(function (error) {
+                alert("Failed to send message. Open Console (F12).");
+                console.error("EmailJS error:", error);
+            });
+    });
+});
+
+
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('loader').style.opacity = '0';
+                document.getElementById('loader').style.pointerEvents = 'none';
+                initAnimations();
+            }, 800);
+        });
+
+        function toggleMobileMenu() {
+            const m = document.getElementById('mobile-menu');
+            m.classList.toggle('hidden');
+        }
+
+        function navigateTo(id) {
+            document.querySelectorAll('.page-section').forEach(s => {
+                s.style.display = 'none';
+                s.style.opacity = '0';
+            });
+            document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+            
+            const target = document.getElementById(id);
+            if(target) {
+                target.style.display = 'block';
+                setTimeout(() => target.style.opacity = '1', 10);
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+            
+            const navBtn = document.querySelector(`button[onclick="navigateTo('${id}')"]`);
+            if(navBtn) navBtn.classList.add('active');
+
+            document.getElementById('mobile-menu').classList.add('hidden');
+        }
+
+        function setHeroLayout(id) {
+            document.querySelectorAll('.hero-variant').forEach(el => el.classList.add('hidden'));
+            const node = document.getElementById(`hero-layout-${id}`);
+            if(node) node.classList.remove('hidden');
+            document.querySelectorAll('.layout-btn').forEach(b => b.classList.remove('active'));
+            const btn = document.querySelector(`.layout-btn[onclick="setHeroLayout(${id})"]`);
+            if(btn) btn.classList.add('active');
+        }
+
+        // Rotating text
+        const roles = ["AI Full-Stack Developer", "ML Builder", "Automation Expert", "Future AI Architect"];
+        let rIdx = 0;
+        setInterval(() => {
+            rIdx = (rIdx + 1) % roles.length;
+            const el = document.getElementById('rotating-text');
+            if(!el) return;
+            el.style.transform = 'translateY(20px)';
+            el.style.opacity = '0';
+            setTimeout(() => {
+                el.innerText = roles[rIdx];
+                el.style.transform = 'translateY(0)';
+                el.style.opacity = '1';
+            }, 500);
+        }, 3000);
+
+        // Custom cursor
+        const cursor = document.getElementById('cursor');
+        const dot = document.getElementById('cursor-dot');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            dot.style.left = e.clientX + 'px';
+            dot.style.top = e.clientY + 'px';
+        });
+
+        // Particle background
+        const canvas = document.getElementById('canvas-bg');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+        window.addEventListener('resize', resize); resize();
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.vx = (Math.random() - 0.5) * 0.5;
+                this.vy = (Math.random() - 0.5) * 0.5;
+                this.size = Math.random() * 2;
+            }
+            update() {
+                this.x += this.vx; this.y += this.vy;
+                if(this.x < 0 || this.x > canvas.width) this.vx *= -1;
+                if(this.y < 0 || this.y > canvas.height) this.vy *= -1;
+            }
+            draw() {
+                ctx.fillStyle = 'rgba(64, 224, 255, 0.3)';
+                ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI*2); ctx.fill();
+            }
+        }
+        for(let i=0; i<60; i++) particles.push(new Particle());
+        function animateBg() {
+            ctx.clearRect(0,0,canvas.width,canvas.height);
+            particles.forEach(p => { p.update(); p.draw(); });
+            ctx.strokeStyle = 'rgba(47, 114, 255, 0.05)';
+            ctx.lineWidth = 0.5;
+            for(let i=0; i<particles.length; i++) {
+                for(let j=i+1; j<particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    if(Math.sqrt(dx*dx + dy*dy) < 100) {
+                        ctx.beginPath(); ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y); ctx.stroke();
+                    }
+                }
+            }
+            requestAnimationFrame(animateBg);
+        }
+        animateBg();
+
+        // GSAP section animations
+        function initAnimations() {
+            gsap.registerPlugin(ScrollTrigger);
+
+            setHeroLayout(1);
+
+            gsap.from("#home h1", { opacity: 0, y: 30, duration: 1, delay: 0.2 });
+
+            // Services cards
+            gsap.from(".services-card", {
+                scrollTrigger: {
+                    trigger: "#services",
+                    start: "top 70%"
+                },
+                opacity: 0,
+                y: 40,
+                stagger: 0.15,
+                duration: 0.7,
+                ease: "power3.out"
+            });
+
+            // Skills
+            gsap.from("#skills .glass-panel", {
+                scrollTrigger: {
+                    trigger: "#skills",
+                    start: "top 75%"
+                },
+                opacity: 0,
+                y: 30,
+                stagger: 0.12,
+                duration: 0.6
+            });
+
+            // Education timeline
+            gsap.from("#education .glass-panel", {
+                scrollTrigger: {
+                    trigger: "#education",
+                    start: "top 70%"
+                },
+                opacity: 0,
+                x: -30,
+                stagger: 0.12,
+                duration: 0.6
+            });
+
+            // Research main card
+            gsap.from(".research-card", {
+                scrollTrigger: {
+                    trigger: "#research",
+                    start: "top 70%"
+                },
+                opacity: 0,
+                y: 40,
+                duration: 0.7,
+                ease: "power3.out"
+            });
+
+            // Insight cards
+            gsap.from(".insight-card", {
+                scrollTrigger: {
+                    trigger: "#insights",
+                    start: "top 75%"
+                },
+                opacity: 0,
+                y: 40,
+                stagger: 0.15,
+                duration: 0.6,
+                ease: "power2.out"
+            });
+        }
+    </script>
+</body>
+</html>
