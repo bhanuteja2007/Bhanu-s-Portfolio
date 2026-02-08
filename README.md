@@ -52,10 +52,8 @@ https://github.com/bhanuteja2007/Bhanu-s-Portfolio
 portfolio/
 │── index.html
 │── README.md
-│── images/
-│   └── (your profile image)
+│── images
 ```
-
 ---
 
 ## 🚀 How to Run Locally
@@ -82,8 +80,6 @@ You can deploy this site using:
 * GitHub Pages
 * Netlify
 * Vercel
-
-If you want, I can guide you step-by-step for deployment.
 
 ---
 
