@@ -6,11 +6,10 @@ A futuristic, interactive, and visually immersive personal portfolio website sho
 
 ## 🌐 Live Preview
 
-> *(Add your GitHub Pages / Netlify / Vercel link here after deployment)*
-> Example:
+> *https://cognitive-portfolio.vercel.app/
 
-```
-https://yourusername.github.io/your-repo-name/
+```[
+https://github.com/bhanuteja2007/Bhanu-s-Portfolio/tree/main
 ```
 
 ---
@@ -64,7 +63,7 @@ portfolio/
 1. Clone the repository:
 
 ```
-git clone https://github.com/your-username/your-repo.git
+git clone https://github.com/bhanuteja2007/Bhanu-s-Portfolio/tree/main
 ```
 
 2. Open the project folder:
