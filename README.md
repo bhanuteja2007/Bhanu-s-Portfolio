@@ -9,7 +9,7 @@ A futuristic, interactive, and visually immersive personal portfolio website sho
 > *https://cognitive-portfolio.vercel.app/
 
 ```[
-https://github.com/bhanuteja2007/Bhanu-s-Portfolio/tree/main
+https://github.com/bhanuteja2007/Bhanu-s-Portfolio
 ```
 
 ---
@@ -62,7 +62,7 @@ portfolio/
 
 1. Clone the repository:
 
-```https://github.com/bhanuteja2007/Bhanu-s-Portfolio/blob/main/README.md
+```https://github.com/bhanuteja2007/Bhanu-s-Portfolio
 ```
 
 2. Open the project folder:
