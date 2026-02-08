@@ -1,4 +1,4 @@
-# 🚀 Bhanu Teja Modem —  Portfolio
+# 🚀 Bhanu Teja Modem — cognitive Portfolio
 
 A futuristic, interactive, and visually immersive personal portfolio website showcasing my journey as an **AI Full-Stack Developer and Future AI Architect**. The site blends modern UI/UX, glassmorphism aesthetics, smooth animations, and real functionality with an integrated contact system.
 
@@ -62,14 +62,13 @@ portfolio/
 
 1. Clone the repository:
 
-```
-git clone https://github.com/bhanuteja2007/Bhanu-s-Portfolio/tree/main
+```https://github.com/bhanuteja2007/Bhanu-s-Portfolio/blob/main/README.md
 ```
 
 2. Open the project folder:
 
 ```
-cd your-repo
+cd Bhanu-s-Portfolio
 ```
 
 3. Open `index.html` in your browser.
